@@ -1,4 +1,39 @@
-# Monitor Fiscal API - Samples
+<div align="center">
+  <img src="https://fiscal.mateusemth.dev/icon-master.png" width="120" alt="Monitor Fiscal Logo" />
+
+  <h1>Monitor Fiscal API - Exemplos de Integração Oficiais</h1>
+
+  <p><strong>Automatize a inteligência tributária e o monitoramento da SEFAZ direto no seu ERP.</strong></p>
+
+  <p>
+    <a href="https://fiscal.mateusemth.dev/conta-api">
+      <img src="https://img.shields.io/badge/API-Gratuita-2eb67d.svg?style=for-the-badge" alt="API Gratuita" />
+    </a>
+    <a href="https://fiscal.mateusemth.dev/conta-api">
+      <img src="https://img.shields.io/badge/Rate_Limit-120_req/min-0052cc.svg?style=for-the-badge" alt="Rate Limit: 120 req/min" />
+    </a>
+    <a href="https://fiscal.mateusemth.dev/api-docs">
+      <img src="https://img.shields.io/badge/Documentação-OpenAPI-black.svg?style=for-the-badge" alt="Documentação OpenAPI" />
+    </a>
+    <a href="https://github.com/mateusemth/api-monitor-sefaz">
+      <img src="https://img.shields.io/badge/Repositório-GitHub-181717.svg?style=for-the-badge&logo=github" alt="Repositório GitHub" />
+    </a>
+  </p>
+
+  <p>
+    <a href="https://fiscal.mateusemth.dev/conta-api">
+      <img src="https://img.shields.io/badge/Gerar_API_Key-2eb67d?style=for-the-badge" alt="Gerar API Key" />
+    </a>
+    <a href="https://fiscal.mateusemth.dev/api-docs">
+      <img src="https://img.shields.io/badge/Ver_Documentação-0052cc?style=for-the-badge" alt="Ver documentação" />
+    </a>
+    <a href="#linguagens">
+      <img src="https://img.shields.io/badge/Executar_Exemplos-181717?style=for-the-badge" alt="Executar exemplos" />
+    </a>
+  </p>
+</div>
+
+---
 
 Exemplos de consumo da API pública do Monitor Fiscal em JavaScript, Python, C#, PHP, Go, C++ e Delphi.
 
