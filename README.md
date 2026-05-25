@@ -4,11 +4,13 @@ Exemplos de consumo da API pública do Monitor Fiscal em JavaScript, Python, C#,
 
 A API ajuda sistemas fiscais, ERPs e rotinas internas a consultar documentos técnicos monitorados, status de portais SEFAZ/SVRS, comparações de documentos persistidos e notificações vinculadas a uma API Key.
 
-Links úteis:
+## Links rápidos
 
-- Conta API: https://fiscal.mateusemth.dev/conta-api
-- Documentação OpenAPI: https://fiscal.mateusemth.dev/api-docs
-- Base da API: `https://fiscal.mateusemth.dev/api`
+| Recurso | Link |
+| :--- | :--- |
+| Conta API | https://fiscal.mateusemth.dev/conta-api |
+| Documentação OpenAPI | https://fiscal.mateusemth.dev/api-docs |
+| Base da API | `https://fiscal.mateusemth.dev/api` |
 
 ## O que os exemplos demonstram
 

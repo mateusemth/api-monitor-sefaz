@@ -26,7 +26,8 @@ class MonitorFiscalClient:
     def verify_token(self):
         print("\n--- Verificando API Key ---")
         data = self._request("/fiscal-api-keys/scopes")
-        print(f"Token Ativo: {data.get('isActive')} | Limite: {data.get('rateLimitMax')} reqs/janela")
+        rate_limit = data.get("rateLimitMax") or "padrão do sistema"
+        print(f"Token Ativo: {data.get('isActive')} | Limite: {rate_limit}")
 
     def check_status(self, portal="nfe"):
         print(f"\n--- Status do Portal: {portal.upper()} ---")

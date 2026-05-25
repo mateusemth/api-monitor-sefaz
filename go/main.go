@@ -43,7 +43,11 @@ func verifyToken() {
 	}
 	var data map[string]interface{}
 	json.Unmarshal(body, &data)
-	fmt.Printf("Token Ativo: %v | Limite: %v reqs por janela\n", data["isActive"], data["rateLimitMax"])
+	rateLimit := data["rateLimitMax"]
+	if rateLimit == nil {
+		rateLimit = "padrão do sistema"
+	}
+	fmt.Printf("Token Ativo: %v | Limite: %v\n", data["isActive"], rateLimit)
 }
 
 func checkStatus(portal string) {

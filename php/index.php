@@ -38,9 +38,8 @@ function verifyToken() {
     echo "\n--- Verificando API Key ---\n";
     $data = doRequest('/fiscal-api-keys/scopes');
     $isActive = isset($data['isActive']) && $data['isActive'] ? 'true' : 'false';
-    if (isset($data['rateLimitMax'])) {
-        echo "Token Ativo: $isActive | Limite: " . $data['rateLimitMax'] . " reqs por janela\n";
-    }
+    $rateLimit = $data['rateLimitMax'] ?? 'padrão do sistema';
+    echo "Token Ativo: $isActive | Limite: $rateLimit\n";
 }
 
 function checkStatus($portal = 'nfe') {

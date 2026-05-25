@@ -23,7 +23,8 @@ class MonitorFiscalClient {
   static async verifyToken() {
     console.log('\n--- Verificando API Key ---');
     const data = await this.request('/fiscal-api-keys/scopes');
-    console.log(`Token Ativo: ${data.isActive} | Limite: ${data.rateLimitMax} reqs/janela`);
+    const rateLimit = data.rateLimitMax ?? 'padrão do sistema';
+    console.log(`Token Ativo: ${data.isActive} | Limite: ${rateLimit}`);
   }
 
   static async checkStatus(portal = 'nfe') {

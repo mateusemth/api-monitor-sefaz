@@ -53,9 +53,12 @@ namespace MonitorFiscal.Samples
         {
             Console.WriteLine("\n--- Verificando API Key ---");
             var data = await RequestAsync("/fiscal-api-keys/scopes");
-            var limit = data.GetProperty("rateLimitMax").GetInt32();
             var active = data.GetProperty("isActive").GetBoolean();
-            Console.WriteLine($"Token Ativo: {active} | Limite: {limit} reqs por janela");
+            var limitProperty = data.GetProperty("rateLimitMax");
+            var limit = limitProperty.ValueKind == JsonValueKind.Null
+                ? "padrão do sistema"
+                : limitProperty.GetInt32().ToString();
+            Console.WriteLine($"Token Ativo: {active} | Limite: {limit}");
         }
 
         static async Task CheckStatusAsync(string portal)
