@@ -1,5 +1,5 @@
 const API_BASE_URL = 'https://fiscal.mateusemth.dev/api';
-const API_KEY = 'SUA_API_KEY_AQUI'; 
+const API_KEY = 'SUA_API_KEY_AQUI';
 
 if (API_KEY === 'SUA_API_KEY_AQUI') {
   console.error('ERRO: A autenticação é obrigatória. Configure sua API_KEY.');
@@ -36,7 +36,7 @@ class MonitorFiscalClient {
     console.log(`\n--- Últimos Documentos: ${portal.toUpperCase()} ---`);
     const data = await this.request(`/fiscal-documents?portal=${portal}&limit=${limit}`);
     (data.documents || []).forEach(doc => {
-      console.log(`[${doc.type}] ${doc.name} -> ${doc.link}`);
+      console.log(`[${doc.tipo}] ${doc.nome} -> ${doc.url}`);
     });
   }
 
@@ -51,11 +51,11 @@ class MonitorFiscalClient {
     const data = await this.request(`/fiscal-notifications?includeRead=${includeRead}`);
     const notifs = data.notifications || [];
     console.log(`Total na fila: ${notifs.length}`);
-    notifs.forEach(n => console.log(`[${n.status}] ${n.subject}`));
+    notifs.forEach(n => console.log(`[${n.status}] ${n.title}`));
   }
 
   static async getComparisons(portal = 'nfe', limit = 3) {
-    console.log(`\n--- Comparações (Diffs/IA): ${portal.toUpperCase()} ---`);
+    console.log(`\n--- Comparações textuais: ${portal.toUpperCase()} ---`);
     const data = await this.request(`/fiscal-document-comparisons?portal=${portal}&limit=${limit}`);
     const comps = data.comparisons || [];
     console.log(`${comps.length} comparações encontradas.`);

@@ -4,7 +4,7 @@
 #include <cpr/cpr.h>
 
 const std::string API_BASE_URL = "https://fiscal.mateusemth.dev/api";
-const std::string API_KEY = "SUA_API_KEY_AQUI"; 
+const std::string API_KEY = "SUA_API_KEY_AQUI";
 
 cpr::Header getHeaders() {
     return cpr::Header{
@@ -45,7 +45,7 @@ void getNotifications(bool includeRead = false) {
 }
 
 void getComparisons(const std::string& portal = "nfe", int limit = 3) {
-    std::cout << "\n--- Comparacoes (Diffs/IA): " << portal << " ---" << std::endl;
+    std::cout << "\n--- Comparacoes textuais: " << portal << " ---" << std::endl;
     cpr::Response r = cpr::Get(cpr::Url{API_BASE_URL + "/fiscal-document-comparisons?portal=" + portal + "&limit=" + std::to_string(limit)}, getHeaders());
     std::cout << "Response:\n" << r.text << std::endl;
 }

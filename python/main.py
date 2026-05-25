@@ -37,7 +37,7 @@ class MonitorFiscalClient:
         print(f"\n--- Últimos Documentos: {portal.upper()} ---")
         data = self._request(f"/fiscal-documents?portal={portal}&limit={limit}")
         for doc in data.get("documents", []):
-            print(f"[{doc.get('type')}] {doc.get('name')} -> {doc.get('link')}")
+            print(f"[{doc.get('tipo')}] {doc.get('nome')} -> {doc.get('url')}")
 
     def get_realtime_documents(self, portal="nfe"):
         print(f"\n--- Busca em Tempo Real (Scraper): {portal.upper()} ---")
@@ -52,10 +52,10 @@ class MonitorFiscalClient:
         notifs = data.get("notifications", [])
         print(f"Total na fila: {len(notifs)}")
         for n in notifs:
-            print(f"[{n.get('status')}] {n.get('subject')}")
+            print(f"[{n.get('status')}] {n.get('title')}")
 
     def get_comparisons(self, portal="nfe", limit=3):
-        print(f"\n--- Comparações (Diffs/IA): {portal.upper()} ---")
+        print(f"\n--- Comparações textuais: {portal.upper()} ---")
         data = self._request(f"/fiscal-document-comparisons?portal={portal}&limit={limit}")
         comps = data.get("comparisons", [])
         print(f"{len(comps)} comparações encontradas.")

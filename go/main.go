@@ -9,14 +9,14 @@ import (
 )
 
 const ApiBaseUrl = "https://fiscal.mateusemth.dev/api"
-const ApiKey = "SUA_API_KEY_AQUI" 
+const ApiKey = "SUA_API_KEY_AQUI"
 
 func doRequest(url string) ([]byte, error) {
 	req, err := http.NewRequest("GET", url, nil)
 	if err != nil {
 		return nil, err
 	}
-	
+
 	req.Header.Set("Authorization", "Bearer "+ApiKey)
 	req.Header.Set("Content-Type", "application/json")
 
@@ -68,15 +68,15 @@ func getRecentDocuments(portal string, limit int) {
 	}
 	var data struct {
 		Documents []struct {
-			Type string `json:"type"`
-			Name string `json:"name"`
-			Link string `json:"link"`
+			Tipo string `json:"tipo"`
+			Nome string `json:"nome"`
+			Url  string `json:"url"`
 		} `json:"documents"`
 	}
 	json.Unmarshal(body, &data)
-	
+
 	for _, doc := range data.Documents {
-		fmt.Printf("[%s] %s -> %s\n", doc.Type, doc.Name, doc.Link)
+		fmt.Printf("[%s] %s -> %s\n", doc.Tipo, doc.Nome, doc.Url)
 	}
 }
 
@@ -105,18 +105,18 @@ func getNotifications(includeRead bool) {
 	var data struct {
 		Notifications []struct {
 			Status  string `json:"status"`
-			Subject string `json:"subject"`
+			Title   string `json:"title"`
 		} `json:"notifications"`
 	}
 	json.Unmarshal(body, &data)
 	fmt.Printf("Total na fila: %d\n", len(data.Notifications))
 	for _, n := range data.Notifications {
-		fmt.Printf("[%s] %s\n", n.Status, n.Subject)
+		fmt.Printf("[%s] %s\n", n.Status, n.Title)
 	}
 }
 
 func getComparisons(portal string, limit int) {
-	fmt.Printf("\n--- Comparações (Diffs/IA): %s ---\n", portal)
+	fmt.Printf("\n--- Comparações textuais: %s ---\n", portal)
 	url := fmt.Sprintf("%s/fiscal-document-comparisons?portal=%s&limit=%d", ApiBaseUrl, portal, limit)
 	body, err := doRequest(url)
 	if err != nil {

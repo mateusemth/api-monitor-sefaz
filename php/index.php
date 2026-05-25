@@ -18,7 +18,7 @@ function doRequest($endpoint) {
     curl_setopt($ch, CURLOPT_URL, $url);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
     curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
-    
+
     $response = curl_exec($ch);
     $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
     $error = curl_error($ch);
@@ -56,7 +56,7 @@ function getRecentDocuments($portal = 'nfe', $limit = 5) {
     $data = doRequest('/fiscal-documents?portal=' . $portal . '&limit=' . $limit);
     if (isset($data['documents']) && is_array($data['documents'])) {
         foreach ($data['documents'] as $doc) {
-            echo "[" . $doc['type'] . "] " . $doc['name'] . " -> " . $doc['link'] . "\n";
+            echo "[" . $doc['tipo'] . "] " . $doc['nome'] . " -> " . $doc['url'] . "\n";
         }
     }
 }
@@ -76,13 +76,13 @@ function getNotifications($includeRead = false) {
     if (isset($data['notifications']) && is_array($data['notifications'])) {
         echo "Total na fila: " . count($data['notifications']) . "\n";
         foreach ($data['notifications'] as $n) {
-            echo "[" . $n['status'] . "] " . $n['subject'] . "\n";
+            echo "[" . $n['status'] . "] " . $n['title'] . "\n";
         }
     }
 }
 
 function getComparisons($portal = 'nfe', $limit = 3) {
-    echo "\n--- Comparações (Diffs/IA): " . strtoupper($portal) . " ---\n";
+    echo "\n--- Comparações textuais: " . strtoupper($portal) . " ---\n";
     $data = doRequest('/fiscal-document-comparisons?portal=' . $portal . '&limit=' . $limit);
     if (isset($data['comparisons']) && is_array($data['comparisons'])) {
         echo count($data['comparisons']) . " comparações encontradas.\n";

@@ -28,7 +28,7 @@ constructor TMonitorFiscalAPI.Create(const AAPIKey: string);
 begin
   if AAPIKey = 'SUA_API_KEY_AQUI' then
     raise Exception.Create('ERRO: A autenticacao e obrigatoria. Configure sua API_KEY.');
-    
+
   FBaseURL := 'https://fiscal.mateusemth.dev/api';
   FAPIKey := AAPIKey;
 end;
@@ -92,7 +92,7 @@ end;
 
 procedure TMonitorFiscalAPI.GetComparisons(const APortal: string; const ALimit: Integer);
 begin
-  Writeln(#10'--- Comparacoes (Diffs/IA): ' + UpperCase(APortal) + ' ---');
+  Writeln(#10'--- Comparacoes textuais: ' + UpperCase(APortal) + ' ---');
   Writeln(ExecuteRequest('/fiscal-document-comparisons?portal=' + APortal + '&limit=' + IntToStr(ALimit)));
 end;
 

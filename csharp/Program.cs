@@ -9,7 +9,7 @@ namespace MonitorFiscal.Samples
     class Program
     {
         private const string ApiBaseUrl = "https://fiscal.mateusemth.dev/api";
-        private const string ApiKey = "SUA_API_KEY_AQUI"; 
+        private const string ApiKey = "SUA_API_KEY_AQUI";
         private static readonly HttpClient client = new HttpClient();
 
         static async Task Main(string[] args)
@@ -73,8 +73,8 @@ namespace MonitorFiscal.Samples
             {
                 foreach (var doc in docs.EnumerateArray())
                 {
-                    Console.WriteLine($"[{doc.GetProperty("type").GetString()}] {doc.GetProperty("name").GetString()}");
-                    Console.WriteLine($"Link: {doc.GetProperty("link").GetString()}\n");
+                    Console.WriteLine($"[{doc.GetProperty("tipo").GetString()}] {doc.GetProperty("nome").GetString()}");
+                    Console.WriteLine($"Link: {doc.GetProperty("url").GetString()}\n");
                 }
             }
         }
@@ -98,14 +98,14 @@ namespace MonitorFiscal.Samples
                 Console.WriteLine($"Total na fila: {notifs.GetArrayLength()}");
                 foreach (var n in notifs.EnumerateArray())
                 {
-                    Console.WriteLine($"[{n.GetProperty("status").GetString()}] {n.GetProperty("subject").GetString()}");
+                    Console.WriteLine($"[{n.GetProperty("status").GetString()}] {n.GetProperty("title").GetString()}");
                 }
             }
         }
 
         static async Task GetComparisonsAsync(string portal, int limit)
         {
-            Console.WriteLine($"\n--- Comparações (Diffs/IA): {portal.ToUpper()} ---");
+            Console.WriteLine($"\n--- Comparações textuais: {portal.ToUpper()} ---");
             var data = await RequestAsync($"/fiscal-document-comparisons?portal={portal}&limit={limit}");
             if (data.TryGetProperty("comparisons", out var comps))
             {
