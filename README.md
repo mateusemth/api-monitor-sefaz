@@ -55,6 +55,7 @@ A API ajuda sistemas fiscais, ERPs e rotinas internas a consultar documentos té
 - Buscar documentos diretamente na fonte monitorada em `GET /api/fiscal-api?portal=nfe`.
 - Ler notificações da chave autenticada em `GET /api/fiscal-notifications`.
 - Consultar comparações textuais em `GET /api/fiscal-document-comparisons`.
+- Baixar tabelas IBPT por UF em `GET /api/ibpt/latest`.
 
 O Monitor Fiscal não é um serviço oficial da SEFAZ. Ele organiza informações públicas monitoradas e expõe uma camada de consulta para integração. Decisões fiscais e operacionais críticas devem considerar a fonte oficial correspondente.
 
@@ -131,6 +132,15 @@ Estados possíveis:
 ### `GET /api/fiscal-document-comparisons`
 
 Retorna comparações textuais entre documentos persistidos, quando há histórico compatível. A geração ou atualização de análise por IA depende de configuração do ambiente e dos parâmetros documentados.
+
+### `GET /api/ibpt/latest`
+
+Retorna as tabelas IBPT em um arquivo ZIP. O parâmetro `uf` identifica as UFs
+solicitadas, com siglas separadas por vírgula. A autenticação utiliza o cabeçalho
+`x-api-token`.
+
+Antes de publicar as tabelas, valide o conteúdo do ZIP, as UFs e a vigência dos
+arquivos.
 
 ## Rate limit e erros
 
